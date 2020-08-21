@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=no">
+  <title>Villa Platzi</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="/otros/platzi_favicon.webp"/>
+</head>
+
+<body>
+  <div class="grid-container unselectable">
+
+    <header class="header">
+      <h1>Villa Platzi</h1>
+    </header>
+
+    <div class="left" id="left">
+      <canvas width="500px" height="500px" id="villaPlatzi"></canvas>
+    </div>
+
+    <div class="right">
+      <p class="mensaje" id="mensaje">
+        🏞️ Tú eres el cerdito 🐖<br>Tienes que llegar rápido al gallinero 🐔🏚️ y antes que el lobo 🐺.<br><br>🐾 ¡Salva las gallinas de sus garras! 🐾
+      </p>
+      <p class="final" id="final">
+        Usa ↕️↔️ para moverte.
+      </p>
+    </div>
+
+    <button class="btn orange" type="reset" onclick="reiniciarJuego()" id="btnReset">
+      <span>Reiniciar Juego</span>
+    </button>
+
+    <div class="options" id="options">
+      <label class="ajuste">
+        Musica
+        <input type="checkbox" checked id="optionMusic" onclick="playPauseMusic()">
+      </label>
+      <label class="ajuste">
+        Botones
+        <input type="checkbox" checked id="optionShowButtons" onclick="showHideButtons()">
+      </label>
+      <label class="ajuste">
+        Vacas
+        <input type="number" value="7" id="cantVacas" min="0" max="91" step="1" style="width: 30px;">
+      </label>
+      <label class="ajuste">
+        Gallinas
+        <input type="number" value="4" id="cantGallinas" min="0" max="9" step="1" style="width: 30px;">
+      </label>
+    </div>
+    <div class="about">
+      <h2>Creado con</h2>
+      <p>
+        HTML5, CSS y JavaScript sin usar librerías externas ni frameworks.<br>
+        Editor: Visual Studio Code.<br>
+        Mira el <a href="https://github.com/JLCareglio/VillaPlatzi" target="_blank" rel="noopener noreferrer">Código fuente</a>
+      </p>
+      <h2>Hazlo tu mismo</h2>
+      <p>
+        Puedes aprender las bases para hacer una página como esta con el Curso Gratis de Programación Básica: <br>
+        <a href="https://platzi.com/cursos/programacion-basica/" target="_blank" rel="noopener noreferrer">Temario Completo</a>
+        &
+        <a href="https://platzi.com/clases/programacion-basica/" target="_blank" rel="noopener noreferrer">Clases del Curso</a><br>
+      </p>
+      <p>
+        <h3>Este curso forma parte de:</h3>
+        <a href="https://platzi.com/fundamentos-programacion/" target="_blank" rel="noopener noreferrer">Fundamentos de programación</a><br>
+        <a href="https://platzi.com/data-marketing/" target="_blank" rel="noopener noreferrer">Marketing Basado en Datos</a><br>
+        <a href="https://platzi.com/multiplataforma-xamarin/" target="_blank" rel="noopener noreferrer">Desarrollo de Apps Multiplataforma con Xamarin</a>
+      </p>
+      <h2>Créditos & Agradecimientos</h2>
+      <p>
+        Recursos gráficos extraídos de: <a href="https://platzi.com/clases/1050-programacion-basica/5123-uso-y-carga-de-imagenes-en-canvas/" target="_blank" rel="noopener noreferrer">esta clase</a>.<br>
+        Gráfico del lobo aportado por: <a href="https://platzi.com/comentario/133102/" target="_blank" rel="noopener noreferrer">Carlos Viteri</a>.<br>
+        Autor de esta página: <a href="https://github.com/JLCareglio/" target="_blank" rel="noopener noreferrer">JLCareglio</a>.
+      <p>
+      <h2>Próximas mejoras:</h2>
+      <p>
+        Mejorará el favicon. <br>
+        El código estará mejor documentado y explicado. <br>
+        Se agregará soporte para teclado y gamepad. <br>
+        Existirá un final secreto extra.
+      </p>
+    </div>
+    <div class="footer">
+      <h3>Footer section</h3>
+    </div>
+  </div>
+  <audio id="music" loop>
+    <source src="musica/Crusaders.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <script src="script.js"></script>
+</body>
+
+</html>

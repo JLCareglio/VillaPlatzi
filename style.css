@@ -1,0 +1,157 @@
+html{
+  scroll-behavior: smooth;
+}
+body{
+  text-align: center;
+  font-size: 24px;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #222222;
+  padding: 0px;
+  margin: 0px;
+}
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.mensaje{
+  font-size: 30px;
+}
+.final{
+  font-size: 32px;
+}
+h1, h2, h3{
+  margin: 10px;
+  font-size: 52px;
+  color: #98CA3F;
+}
+h2{
+  font-size: 48px;
+}
+h3{
+  font-size: 40px;
+}
+a{
+  font-size: 20px;
+}
+a:link {
+  color: rgb(0, 173, 0);
+}
+a:visited {
+  color: green;
+}
+a:hover {
+  color: hotpink;
+}
+a:active {
+  color: blue;
+}
+
+.ajuste{
+  border: 2px solid white;
+  border-radius: 2px;
+  padding: 15px 0px;
+  margin: 0px 2px;
+}
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'header header'
+    'options options'
+    'left right'
+    'left btn'
+    'about about'
+    'footer footer';
+}
+.header {
+  grid-area: header;
+  background-color: #000000;
+  font-size: 36px;
+}
+
+.left {
+  grid-area: left;
+  justify-self: end;
+  height: 500px;
+  width: 500px;
+}
+
+.right{
+  grid-area: right;
+  align-self: end;
+  width: 400px;
+  }
+
+.options{
+  grid-area: options;
+  font-size: 20px;
+  background-color: #333333;
+  padding: 20px 0px;
+  text-align: center;
+}
+.about{
+  grid-area: about;
+  background-color: #333333;
+}
+.footer {
+  grid-area: footer;
+  background-color: #000000;
+  text-align: center;
+}
+
+.btn {
+  grid-area: btn;
+  align-self: end;
+  font-size: 40px;
+  border-width: 0;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  background-color: #2ecc71;
+  color: #ecf0f1;
+  transition: background-color .3s;
+  height: 100px;
+  width: 400px;
+}
+.btn:hover, .btn:focus {
+  background-color: #27ae60;
+}
+.btn.orange {
+  background-color: #e67e22;
+}
+.btn.orange:hover, .btn.orange:focus {
+  background-color: #d35400;
+}
+.btn.red {
+  background-color: #e74c3c;
+}
+.btn.red:hover, .btn.red:focus {
+  background-color: #c0392b;
+}
+.btn.blue {
+  background-color: #16828C;
+}
+.btn.blue:hover, .btn.blue:focus {
+  background-color: #115d64;
+}
+
+@media (max-width: 900px) {
+  .grid-container  {
+    grid-template-areas: 
+      'header'
+      'options'
+      'left'
+      'right'
+      'btn'
+      'about'
+      'footer';
+  }
+  .left, .right, .btn{
+    justify-self: center;
+    width: 500px;
+  }
+}

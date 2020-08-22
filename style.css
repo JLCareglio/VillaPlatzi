@@ -19,6 +19,12 @@ body{
   -ms-user-select: none;
   user-select: none;
 }
+.footer a img{
+  -webkit-filter: invert(1);
+  filter: invert(1);
+  width: 40px;
+  padding: 10px 1px 5px 1px;
+}
 .mensaje{
   font-size: 30px;
 }

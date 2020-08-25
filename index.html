@@ -14,14 +14,14 @@
 <body>
   <div class="grid-container unselectable">
     <header class="header">
-      <h1>Villa Platzi</h1>
+      <h1 id="nombreJuego">Villa Platzi</h1>
     </header>
 
     <div class="left" id="left">
       <canvas width="500px" height="500px" id="villaPlatzi"></canvas>
     </div>
 
-    <div class="right">
+    <div class="right" id="right" onclick="location.href='index.html#right';">
       <p class="mensaje" id="mensaje">
         🏞️ Tú eres el cerdito 🐖<br>Tienes que llegar rápido al gallinero 🐔🏚️ y antes que el lobo 🐺.<br><br>🐾 ¡Salva las gallinas de sus garras! 🐾
       </p>
@@ -35,28 +35,50 @@
     </button>
 
     <div class="options" id="options">
+      <button class="ajuste" style="font-size: 30px; width: 50px;" onclick="window.open('https://platzi.com/r/JLCareglio/','_blank');";>
+        ❤️
+      </button>
       <label class="ajuste">
-        Música
-        <input type="checkbox" checked id="optionMusic" onclick="playPauseMusic()">
+        Música <br>
+        <div class="switch">
+          <input type="checkbox" checked id="optionMusic" onclick="playPauseMusic()">
+          <span class="slider round"></span>
+        </div>
       </label>
       <label class="ajuste">
-        Botones
-        <input type="checkbox" checked id="optionShowButtons" onclick="showHideButtons()">
+        Botones <br>
+        <div class="switch">
+          <input type="checkbox" checked id="optionShowButtons" onclick="showHideButtons()">
+          <span class="slider round"></span>
+        </div>
       </label>
       <label class="ajuste">
-        Vacas
-        <input type="number" value="7" id="cantVacas" min="0" max="91" step="1" style="width: 30px;">
+        🐄🐄<br>
+        <div class="number">
+          <input type="number" value="7" id="cantVacas" min="0" max="91" step="1">
+        </div>
       </label>
       <label class="ajuste">
-        Gallinas
-        <input type="number" value="4" id="cantGallinas" min="0" max="9" step="1" style="width: 30px;">
+        🐔🐔<br>
+        <div class="number">
+          <input type="number" value="4" id="cantGallinas" min="0" max="9" step="1">
+        </div>
       </label>
+      <label class="ajuste">
+        🐺 <br>
+        <div class="number">
+          <input type="number" disabled value="1" id="cantLobos" min="0" max="1" step="1">
+        </div>
+      </label>
+      <button class="ajuste" style="font-size: 30px; width: 50px;" onclick = "location.href =
+      window.innerWidth < 900 ? 'index.html#right' : 'index.html#about';">
+        ❓
+      </button>
     </div>
-    <div class="about">
+    <div class="about" id="about">
       <h2>Informacion</h2>
       <p>
-        Este juego llamado Villa Platzi esta basado un con HTML5, CSS y JavaScript sin usar librerías externas ni frameworks.<br>
-        Editor: Visual Studio Code.<br>
+        Este juego llamado Villa Platzi es un pequeño experimento creado por Jesús Lautaro Careglio Albornoz usando HTML5, CSS y JavaScript sin usar CDN, librerias externas o frameworks.<br>
         Mira el <a href="https://github.com/JLCareglio/VillaPlatzi" target="_blank" rel="noopener noreferrer">Código fuente</a>
       </p>
       <h2>Hazlo tu mismo</h2>
@@ -80,11 +102,14 @@
       <p>
       <h2>Próximas mejoras:</h2>
       <p>
-        Mejorará el favicon. <br>
         El código estará mejor documentado y explicado. <br>
         Se agregará soporte para teclado y gamepad. <br>
         Existirá un final secreto extra.
       </p>
+      <button class="ajuste" style="font-size: 30px; width: 80px;"onclick="location.href = 'index.html#nombreJuego';">
+        🔝
+      </button>
+      </button>
     </div>
     <div class="footer">
       <a title="GitHub" href="https://JLCareglio.github.io/" target="_blank" rel="noopener noreferrer"><img src="iconos_svg/github.svg" alt="GitHub"/></a>

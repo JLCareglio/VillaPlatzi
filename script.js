@@ -8,6 +8,10 @@ byId("optionMusic").checked = JSON.parse(
 byId("optionShowButtons").checked = JSON.parse(
   localStorage.getItem("optionShowButtons") || true
 );
+var finalesConseguidos = JSON.parse(
+  localStorage.getItem("finalesConseguidos") || "[]"
+);
+actualizarFinalesConseguidos();
 
 // Declaramos variables para usar en cualquier parte del script:
 var canvasVilla = byId("villaPlatzi").getContext("2d");
@@ -18,8 +22,18 @@ var fondo = { url: "imagenes/tile.png", cargar: false, x: 0, y: 0 };
 var cerdo = { url: "imagenes/cerdo.png", cargar: false, x: 0, y: 0 };
 var lobo = { url: "imagenes/lobo.png", cargar: false, x: 200, y: 0 };
 var arrowUp = { url: "imagenes/arrowUp.png", cargar: false, x: 200, y: 25 };
-var arrowDown = { url: "imagenes/arrowDown.png", cargar: false, x: 200, y: 375 };
-var arrowRight = { url: "imagenes/arrowRight.png", cargar: false, x: 375, y: 200 };
+var arrowDown = {
+  url: "imagenes/arrowDown.png",
+  cargar: false,
+  x: 200,
+  y: 375,
+};
+var arrowRight = {
+  url: "imagenes/arrowRight.png",
+  cargar: false,
+  x: 375,
+  y: 200,
+};
 var arrowLeft = { url: "imagenes/arrowLeft.png", cargar: false, x: 25, y: 200 };
 // Las vacas y pollos tendran varias coordenadas para colocarlas a todas
 var vaca = {
@@ -106,6 +120,7 @@ function playerMove(direccion) {
             "🐖 La granja no te intereso nada, y te fuiste de vacaciones a Miami 🏖️ (?.",
             "👻Final Secreto 2/2👻"
           );
+          finalConseguido(5);
           return;
         }
         break;
@@ -147,6 +162,7 @@ function playerMove(direccion) {
             "🐖 La granja no te intereso nada, y te fuiste de vacaciones a Disneyland 🏰 (?.",
             "👻Final Secreto 2/2👻"
           );
+          finalConseguido(5);
           return;
         }
         break;
@@ -161,24 +177,31 @@ function playerMove(direccion) {
     console.log("posLobito -> x=" + lobo.x + " y=" + lobo.y);
     dibujar();
 
-    // Finales posibles luego de evaluar posiciones del lobo y cerdito.
-    if (cerdo.y == lobo.y && cerdo.x == lobo.x){ // Cerdo y Lobo en mismo lugar
-      if (cerdo.y >= 400 && cerdo.x >= 400)
+    // Otros finales posibles luego de evaluar posiciones del lobo y cerdito.
+    if (cerdo.y == lobo.y && cerdo.x == lobo.x) {
+      // Cerdo y Lobo en mismo lugar
+      if (cerdo.y >= 400 && cerdo.x >= 400) {
         secreto(
           "🐺🐖 Las gallinas ven que llegas junto con el lobo, creen que es un buen sujeto y por alguna razón todos terminaron de fiesta (?.",
           "👻Final Secreto 1/2👻"
         );
-      else perdiste("🐺 Perdiste 🐺<br>El lobo te devoró", "🥓 Final 1/4 🥓");
+        finalConseguido(4);
+      } else {
+        perdiste("🐺 Perdiste 🐺<br>El lobo te devoró", "🥓 Final 1/4 🥓");
+        finalConseguido(0);
+      }
     } else if (
       cerdo.y >= 400 &&
       cerdo.x >= 400 &&
       400 - lobo.x <= sizeCuadrante &&
       400 - lobo.y <= sizeCuadrante
-    ) { // 
+    ) {
+      //
       ganaste(
         "😨 Ganaste pero solo por poco! 😨<br>Llegaste al granero apenas antes que el lobo y entre varios lo ahuyentaron",
         "⚔️ Final 3/4 ⚔️"
       );
+      finalConseguido(2);
     } else if (cerdo.y >= 400 && cerdo.x >= 400) {
       lobo.x = 325;
       lobo.y = 325;
@@ -187,6 +210,7 @@ function playerMove(direccion) {
         "😎🥳 VICTORIA APLASTANTE!! 🥳😎<br>Llegaste al granero mucho antes que el lobo",
         "✌️ Final 4/4 👍"
       );
+      finalConseguido(3);
     } else if (lobo.x >= 400 && lobo.y >= 400) {
       lobo.x = 400;
       lobo.y = 400;
@@ -195,9 +219,9 @@ function playerMove(direccion) {
         "🥺 Perdiste 🥺<br>El lobo llego antes al granero y se comió todos los animales<br>😤 Juraste venganza 😠",
         "👊 Final 2/4 👊"
       );
+      finalConseguido(1);
     }
-  }
-  else{
+  } else {
     // En caso de que el juego ya termino y el jugador tratase de moverse esto es evitado y también acomodamos el scroll para que vea mejor el botón de reinicio.
     location.href = "index.html#left";
   }
@@ -243,7 +267,7 @@ function reiniciarJuego() {
   lobo.y = 0;
   byId("mensaje").innerHTML =
     "🏞️ Tu eres el cerdito 🐖<br>Tienes que llegar rápido al gallinero 🐔🏚️ y antes que el lobo 🐺.<br><br>🐾 ¡Salva las gallinas de sus garras! 🐾";
-  byId("final").innerHTML = "Usa ↕️↔️ para moverte."
+  byId("final").innerHTML = "Usa ↕️↔️ para moverte.";
   byId("mensaje").style.color = "white";
   byId("final").style.color = "white";
   byId("btnReset").className = "unselectable btn orange";
@@ -251,6 +275,21 @@ function reiniciarJuego() {
   dibujar();
   juegoTerminado = false;
   location.href = "index.html#options";
+}
+
+function finalConseguido(nFinal) {
+  finalesConseguidos[nFinal] = true;
+  localStorage.setItem('finalesConseguidos', JSON.stringify(finalesConseguidos));
+  actualizarFinalesConseguidos();
+}
+function actualizarFinalesConseguidos() {
+  let count = 0;
+  let cantFinales = 6;
+  let tercio = cantFinales / 3;
+  finalesConseguidos.forEach((v) => (v ? count++ : v));
+  byId("contadorFinales").value = count + "/" + cantFinales;
+  byId("medalla").innerHTML =
+    count >= tercio * 3 ? "🏆🏆🏆" : count >= tercio * 2 ? "🏆🏆" : "🏆";
 }
 
 // Input para movimiento detectado con clicks
@@ -267,26 +306,17 @@ function detectarClick(canvas, event) {
   let y = event.clientY - rect.top;
 
   console.log("click en -> x=" + x, " y=" + y);
-  if (x > padding && x < sizeCanvas - padding && y < padding)
-    playerMove("up");
-  else if (
-    x > padding &&
-    x < sizeCanvas - padding &&
-    y > sizeCanvas - padding
-  )
+  if (x > padding && x < sizeCanvas - padding && y < padding) playerMove("up");
+  else if (x > padding && x < sizeCanvas - padding && y > sizeCanvas - padding)
     playerMove("down");
   else if (x < padding && y > padding && y < sizeCanvas - padding)
     playerMove("left");
-  else if (
-    x > sizeCanvas - padding &&
-    y > padding &&
-    y < sizeCanvas - padding
-  )
+  else if (x > sizeCanvas - padding && y > padding && y < sizeCanvas - padding)
     playerMove("right");
 }
 // Input para movimiento detectado con teclado
-document.addEventListener('keydown', function(event) {
-  switch(event.keyCode){
+document.addEventListener("keydown", function (event) {
+  switch (event.keyCode) {
     case 38:
       event.preventDefault();
     case 87:

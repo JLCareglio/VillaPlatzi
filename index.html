@@ -16,7 +16,37 @@
     <header class="header">
       <h1 id="nombreJuego">Villa Platzi</h1>
     </header>
-
+    <div class="about" id="about">
+      <h2>Informacion</h2>
+      <p>
+        Este juego llamado Villa Platzi es un pequeño experimento creado por Jesús Lautaro Careglio Albornoz usando HTML5, CSS y JavaScript sin librerias externas o frameworks.<br>
+        Mira el <a href="https://github.com/JLCareglio/VillaPlatzi" target="_blank" rel="noopener noreferrer">Código fuente</a>
+      </p>
+      <h2>Hazlo tu mismo</h2>
+      <p>
+        Puedes aprender las bases para hacer una página como ésta con el Curso Gratis de Programación Básica: <br>
+        <a href="https://platzi.com/cursos/programacion-basica/" target="_blank" rel="noopener noreferrer">Temario Completo</a>
+        &
+        <a href="https://platzi.com/clases/programacion-basica/" target="_blank" rel="noopener noreferrer">Clases del Curso</a><br>
+      </p>
+      <p>
+        <h3>Éste curso forma parte de:</h3>
+        <a href="https://platzi.com/fundamentos-programacion/" target="_blank" rel="noopener noreferrer">Fundamentos de programación</a><br>
+        <a href="https://platzi.com/data-marketing/" target="_blank" rel="noopener noreferrer">Marketing Basado en Datos</a><br>
+        <a href="https://platzi.com/multiplataforma-xamarin/" target="_blank" rel="noopener noreferrer">Desarrollo de Apps Multiplataforma con Xamarin</a>
+      </p>
+      <h2>Créditos & Agradecimientos</h2>
+      <p>
+        Recursos gráficos extraídos de: <a href="https://platzi.com/clases/1050-programacion-basica/5123-uso-y-carga-de-imagenes-en-canvas/" target="_blank" rel="noopener noreferrer">ésta clase</a>.<br>
+        Guíon: <a href="https://www.youtube.com/channel/UCadiJJ303PAqHuvJSZECR9w" target="_blank" rel="noopener noreferrer">Santikin</a>
+        Gráfico del lobo aportado por: <a href="https://platzi.com/comentario/133102/" target="_blank" rel="noopener noreferrer">Carlos Viteri</a>.<br>
+        Autor de esta página: <a href="https://platzi.com/comentario/1673893/" target="_blank" rel="noopener noreferrer">JLCareglio</a>.
+      <p>
+      <button class="ajuste" style="font-size: 30px; width: 80px;"onclick="location.href = 'index.html#nombreJuego';">
+        🔝
+      </button>
+      </button>
+    </div>
     <div class="left" id="left">
       <canvas width="500px" height="500px" id="villaPlatzi"></canvas>
     </div>
@@ -38,6 +68,12 @@
       <button class="ajuste" style="font-size: 30px; width: 50px;" onclick="window.open('https://platzi.com/r/JLCareglio/','_blank');";>
         ❤️
       </button>
+      <label class="ajuste">
+        <medalla id="medalla">🥉</medalla><br>
+        <div class="number">
+          <input type="text" readonly value="0/6" id="contadorFinales" min="0" max="1" step="1">
+        </div>
+      </label>
       <label class="ajuste">
         Música <br>
         <div class="switch">
@@ -64,51 +100,9 @@
           <input type="number" value="4" id="cantGallinas" min="0" max="9" step="1">
         </div>
       </label>
-      <label class="ajuste">
-        🐺 <br>
-        <div class="number">
-          <input type="number" disabled value="1" id="cantLobos" min="0" max="1" step="1">
-        </div>
-      </label>
       <button class="ajuste" style="font-size: 30px; width: 50px;" onclick = "location.href =
       window.innerWidth < 900 ? 'index.html#right' : 'index.html#about';">
         ❓
-      </button>
-    </div>
-    <div class="about" id="about">
-      <h2>Informacion</h2>
-      <p>
-        Este juego llamado Villa Platzi es un pequeño experimento creado por Jesús Lautaro Careglio Albornoz usando HTML5, CSS y JavaScript sin usar CDN, librerias externas o frameworks.<br>
-        Mira el <a href="https://github.com/JLCareglio/VillaPlatzi" target="_blank" rel="noopener noreferrer">Código fuente</a>
-      </p>
-      <h2>Hazlo tu mismo</h2>
-      <p>
-        Puedes aprender las bases para hacer una página como ésta con el Curso Gratis de Programación Básica: <br>
-        <a href="https://platzi.com/cursos/programacion-basica/" target="_blank" rel="noopener noreferrer">Temario Completo</a>
-        &
-        <a href="https://platzi.com/clases/programacion-basica/" target="_blank" rel="noopener noreferrer">Clases del Curso</a><br>
-      </p>
-      <p>
-        <h3>Éste curso forma parte de:</h3>
-        <a href="https://platzi.com/fundamentos-programacion/" target="_blank" rel="noopener noreferrer">Fundamentos de programación</a><br>
-        <a href="https://platzi.com/data-marketing/" target="_blank" rel="noopener noreferrer">Marketing Basado en Datos</a><br>
-        <a href="https://platzi.com/multiplataforma-xamarin/" target="_blank" rel="noopener noreferrer">Desarrollo de Apps Multiplataforma con Xamarin</a>
-      </p>
-      <h2>Créditos & Agradecimientos</h2>
-      <p>
-        Recursos gráficos extraídos de: <a href="https://platzi.com/clases/1050-programacion-basica/5123-uso-y-carga-de-imagenes-en-canvas/" target="_blank" rel="noopener noreferrer">ésta clase</a>.<br>
-        Gráfico del lobo aportado por: <a href="https://platzi.com/comentario/133102/" target="_blank" rel="noopener noreferrer">Carlos Viteri</a>.<br>
-        Autor de esta página: <a href="https://platzi.com/comentario/1673893/" target="_blank" rel="noopener noreferrer">JLCareglio</a>.
-      <p>
-      <h2>Próximas mejoras:</h2>
-      <p>
-        El código estará mejor documentado y explicado. <br>
-        Se agregará soporte para teclado y gamepad. <br>
-        Existirá un final secreto extra.
-      </p>
-      <button class="ajuste" style="font-size: 30px; width: 80px;"onclick="location.href = 'index.html#nombreJuego';">
-        🔝
-      </button>
       </button>
     </div>
     <div class="footer">

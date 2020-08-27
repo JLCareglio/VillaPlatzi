@@ -102,7 +102,11 @@ function playerMove(direccion) {
         } else if (cerdo.x >= sizeCanvas - sizeCuadrante * 4) {
           cerdo.y = sizeCanvas * -2;
           cerdo.x = sizeCanvas * 2;
-          alert("final secreto 2/2 en construccion");
+          secreto(
+            "🐖 La granja no te intereso nada, y te fuiste de vacaciones a Miami 🏖️ (?.",
+            "👻Final Secreto 2/2👻"
+          );
+          return;
         }
         break;
       case "down":
@@ -139,7 +143,11 @@ function playerMove(direccion) {
         } else if (cerdo.y <= sizeCuadrante) {
           cerdo.y = sizeCanvas * -2;
           cerdo.x = sizeCanvas * 2;
-          alert("final secreto 2/2 en construccion");
+          secreto(
+            "🐖 La granja no te intereso nada, y te fuiste de vacaciones a Disneyland 🏰 (?.",
+            "👻Final Secreto 2/2👻"
+          );
+          return;
         }
         break;
     }
@@ -157,7 +165,7 @@ function playerMove(direccion) {
     if (cerdo.y == lobo.y && cerdo.x == lobo.x){ // Cerdo y Lobo en mismo lugar
       if (cerdo.y >= 400 && cerdo.x >= 400)
         secreto(
-          "☠️ DERROTA BRUTAL ☠️<br>El 🐺 devoró todos los 🐔🐓🐤 y llegaste 🐖! solo para ser su 🧁🍰.",
+          "🐺🐖 Las gallinas ven que llegas junto con el lobo, creen que es un buen sujeto y por alguna razón todos terminaron de fiesta (?.",
           "👻Final Secreto 1/2👻"
         );
       else perdiste("🐺 Perdiste 🐺<br>El lobo te devoró", "🥓 Final 1/4 🥓");
@@ -216,8 +224,11 @@ function perdiste(msj, fn = "") {
   juegoTerminado = true;
 }
 function secreto(msj, fn = "") {
-  dibujarLinea("blue", 100, 250, 400, 250, canvasVilla, 75);
-  dibujarLinea("blue", 250, 100, 250, 400, canvasVilla, 75);
+  dibujarLinea("blue", 250, 450, 250, 275, canvasVilla, 50);
+  dibujarLinea("blue", 250, 275, 375, 275, canvasVilla, 50);
+  dibujarLinea("blue", 375, 275, 375, 75, canvasVilla, 50);
+  dibujarLinea("blue", 375, 75, 150, 75, canvasVilla, 50);
+  dibujarLinea("blue", 150, 75, 150, 200, canvasVilla, 50);
   byId("mensaje").innerHTML = msj;
   byId("mensaje").style.color = "9999ff";
   byId("final").style.color = "blue";
@@ -274,7 +285,41 @@ function detectarClick(canvas, event) {
     playerMove("right");
 }
 // Input para movimiento detectado con teclado
-// En construccion
+document.addEventListener('keydown', function(event) {
+  switch(event.keyCode){
+    case 38:
+      event.preventDefault();
+    case 87:
+    case 73:
+    case 104:
+      playerMove("up");
+      break;
+    case 40:
+      event.preventDefault();
+    case 83:
+    case 75:
+    case 98:
+      playerMove("down");
+      break;
+    case 37:
+    case 65:
+    case 74:
+    case 100:
+      playerMove("left");
+      break;
+    case 39:
+    case 68:
+    case 76:
+    case 102:
+      playerMove("right");
+      break;
+    //ReiniciarJuego
+    case 32:
+      event.preventDefault();
+    case 13:
+      reiniciarJuego();
+  }
+});
 
 function setRandomPosAnimals() {
   vaca.cant = byId("cantVacas").value;

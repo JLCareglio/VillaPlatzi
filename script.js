@@ -223,7 +223,7 @@ function playerMove(direccion) {
     }
   } else {
     // En caso de que el juego ya termino y el jugador tratase de moverse esto es evitado y también acomodamos el scroll para que vea mejor el botón de reinicio.
-    location.href = "index.html#left";
+    // location.href = "index.html#canvasJuego";
   }
 }
 
@@ -274,7 +274,7 @@ function reiniciarJuego() {
   setRandomPosAnimals();
   dibujar();
   juegoTerminado = false;
-  location.href = "index.html#options";
+  //location.href = "index.html#mensajes";
 }
 
 function finalConseguido(nFinal) {

@@ -78,8 +78,8 @@ a:active {
   grid-template-areas: 
     'header header'
     'options options'
-    'left right'
-    'left btn'
+    'mensajes canvasJuego'
+    'btn canvasJuego'
     'about about'
     'footer footer';
 }
@@ -89,16 +89,17 @@ a:active {
   font-size: 36px;
 }
 
-.left {
-  grid-area: left;
-  justify-self: end;
+.canvasJuego {
+  grid-area: canvasJuego;
+  justify-self: start;
   height: 500px;
   width: 500px;
 }
 
-.right{
-  grid-area: right;
+.mensajes{
+  grid-area: mensajes;
   align-self: end;
+  justify-self: end;
   width: 400px;
   border: 4px solid white;
   border-radius: 10px;
@@ -124,6 +125,7 @@ a:active {
 .btn {
   cursor: pointer;
   grid-area: btn;
+  justify-self: end;
   align-self: end;
   font-size: 40px;
   border-width: 0;
@@ -163,13 +165,13 @@ a:active {
     grid-template-areas: 
       'header'
       'options'
-      'left'
-      'right'
+      'mensajes'
+      'canvasJuego'
       'btn'
       'about'
       'footer';
   }
-  .left, .right, .btn{
+  .canvasJuego, .mensajes, .btn{
     justify-self: center;
     width: 500px;
   }

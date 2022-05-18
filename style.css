@@ -76,13 +76,25 @@ a:active {
 .grid-container {
   display: grid;
   grid-template-areas: 
-    'header header'
-    'options options'
+    'header'
+    'options'
+    'grid-container-game'
+    'about'
+    'footer';
+}
+.grid-container-game {
+  margin: 4px 0px;
+  align-self: center;
+  justify-self: center;
+  width: 900px;
+  border-radius: 10px;
+  display: grid;
+  outline: white 4px solid;
+  grid-template-areas: 
     'mensajes canvasJuego'
     'btn canvasJuego'
-    'about about'
-    'footer footer';
 }
+
 .header {
   grid-area: header;
   background-color: #000000;
@@ -94,6 +106,8 @@ a:active {
   justify-self: start;
   height: 500px;
   width: 500px;
+  outline: #222222 4px solid;
+  border-radius: 10px 0 0 0;
 }
 
 .mensajes{
@@ -101,8 +115,6 @@ a:active {
   align-self: end;
   justify-self: end;
   width: 400px;
-  border: 4px solid white;
-  border-radius: 10px;
 }
 
 .options{
@@ -125,16 +137,14 @@ a:active {
 .btn {
   cursor: pointer;
   grid-area: btn;
-  justify-self: end;
   align-self: end;
   font-size: 40px;
   border-width: 0;
   outline: none;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
   background-color: #2ecc71;
   color: #ecf0f1;
   transition: background-color .3s;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   height: 100px;
   width: 400px;
 }
@@ -161,19 +171,22 @@ a:active {
 }
 
 @media (max-width: 900px) {
-  .grid-container  {
+  .grid-container-game {
+    width: 500px;
     grid-template-areas: 
-      'header'
-      'options'
       'mensajes'
       'canvasJuego'
       'btn'
-      'about'
-      'footer';
   }
   .canvasJuego, .mensajes, .btn{
     justify-self: center;
     width: 500px;
+  }
+  .canvasJuego{
+    border-radius: 10px 10px 0 0;
+  }
+  .btn{
+    border-radius: 0px;
   }
 }
 

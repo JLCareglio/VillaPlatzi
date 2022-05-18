@@ -47,22 +47,24 @@
       </button>
       </button>
     </div>
-    <div class="canvasJuego" id="canvasJuego">
-      <canvas width="500px" height="500px" id="villaPlatzi"></canvas>
+    <div class="grid-container-game" id="grid-container-game">
+      <div class="canvasJuego" id="canvasJuego">
+        <canvas width="500px" height="500px" id="villaPlatzi"></canvas>
+      </div>
+  
+      <div class="mensajes" id="mensajes" onclick="location.href='index.html#mensajes';">
+        <p class="mensaje" id="mensaje">
+          🏞️ Tú eres el cerdito 🐖<br>Tienes que llegar rápido al gallinero 🐔🏚️ y antes que el lobo 🐺.<br><br>🐾 ¡Salva las gallinas de sus garras! 🐾
+        </p>
+        <p class="final" id="final">
+          Usa ↕️↔️ para moverte.
+        </p>
+      </div>
+  
+      <button class="btn orange" type="reset" onclick="reiniciarJuego()" id="btnReset">
+        <span>Reiniciar Juego</span>
+      </button>
     </div>
-
-    <div class="mensajes" id="mensajes" onclick="location.href='index.html#mensajes';">
-      <p class="mensaje" id="mensaje">
-        🏞️ Tú eres el cerdito 🐖<br>Tienes que llegar rápido al gallinero 🐔🏚️ y antes que el lobo 🐺.<br><br>🐾 ¡Salva las gallinas de sus garras! 🐾
-      </p>
-      <p class="final" id="final">
-        Usa ↕️↔️ para moverte.
-      </p>
-    </div>
-
-    <button class="btn orange" type="reset" onclick="reiniciarJuego()" id="btnReset">
-      <span>Reiniciar Juego</span>
-    </button>
 
     <div class="options" id="options">
       <button class="ajuste" style="font-size: 30px; width: 50px;" onclick="window.open('https://platzi.com/r/JLCareglio/','_blank');";>

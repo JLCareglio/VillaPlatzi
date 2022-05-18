@@ -21,20 +21,13 @@ var juegoTerminado = false;
 var fondo = { url: "imagenes/tile.png", cargar: false, x: 0, y: 0 };
 var cerdo = { url: "imagenes/cerdo.png", cargar: false, x: 0, y: 0 };
 var lobo = { url: "imagenes/lobo.png", cargar: false, x: 200, y: 0 };
-var arrowUp = { url: "imagenes/arrowUp.png", cargar: false, x: 200, y: 25 };
-var arrowDown = {
-  url: "imagenes/arrowDown.png",
+var arrowUp = {
+  url: "imagenes/arrowUp.png",
   cargar: false,
-  x: 200,
-  y: 375,
-};
-var arrowRight = {
-  url: "imagenes/arrowRight.png",
-  cargar: false,
-  x: 375,
-  y: 200,
-};
-var arrowLeft = { url: "imagenes/arrowLeft.png", cargar: false, x: 25, y: 200 };
+  xL: [250, 410, 250, 90],
+  yL: [90, 250, 410, 250],
+  alpha: 0.4,
+}
 // Las vacas y pollos tendran varias coordenadas para colocarlas a todas
 var vaca = {
   url: "imagenes/vaca.png",
@@ -58,9 +51,6 @@ elementosDibujables.push(pollo);
 elementosDibujables.push(cerdo);
 elementosDibujables.push(lobo);
 elementosDibujables.push(arrowUp);
-elementosDibujables.push(arrowDown);
-elementosDibujables.push(arrowRight);
-elementosDibujables.push(arrowLeft);
 
 setRandomPosAnimals();
 for (const key in elementosDibujables) {
@@ -83,15 +73,20 @@ function dibujar() {
         if (element == vaca || element == pollo)
           for (let i = 0; i < element.cant; i++)
             canvasVilla.drawImage(element.imagen, element.xL[i], element.yL[i]);
-        else if (
-          !(
-            !byId("optionShowButtons").checked &&
-            (element == arrowUp ||
-              element == arrowDown ||
-              element == arrowLeft ||
-              element == arrowRight)
-          )
-        )
+        else if (byId("optionShowButtons").checked && element == arrowUp) {
+          for (let i = 0; i < 4; i++) {
+            canvasVilla.save();
+            canvasVilla.globalAlpha = element.alpha;
+            canvasVilla.translate(element.xL[i], element.yL[i]);
+            canvasVilla.rotate((i * 90 * Math.PI) / 180);
+            canvasVilla.drawImage(
+              element.imagen,
+              -element.imagen.width / 2,
+              -element.imagen.height / 2
+            );
+            canvasVilla.restore();
+          }
+        } else if (!(!byId("optionShowButtons").checked && element == arrowUp))
           canvasVilla.drawImage(element.imagen, element.x, element.y);
       }
     }
@@ -279,7 +274,10 @@ function reiniciarJuego() {
 
 function finalConseguido(nFinal) {
   finalesConseguidos[nFinal] = true;
-  localStorage.setItem('finalesConseguidos', JSON.stringify(finalesConseguidos));
+  localStorage.setItem(
+    "finalesConseguidos",
+    JSON.stringify(finalesConseguidos)
+  );
   actualizarFinalesConseguidos();
 }
 function actualizarFinalesConseguidos() {

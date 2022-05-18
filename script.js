@@ -27,7 +27,7 @@ var arrowUp = {
   xL: [250, 410, 250, 90],
   yL: [90, 250, 410, 250],
   alpha: 0.4,
-}
+};
 // Las vacas y pollos tendran varias coordenadas para colocarlas a todas
 var vaca = {
   url: "imagenes/vaca.png",
@@ -100,7 +100,7 @@ function playerMove(direccion) {
     let movJugador = sizeCuadrante * 2;
     let movLobo = sizeCuadrante;
 
-    //Posibles desplazamientos del jugador y sus repercuciones
+    //Posibles desplazamientos del jugador y sus repercusiones
     switch (direccion) {
       case "up":
         console.log("playerMove -> up");
@@ -113,7 +113,7 @@ function playerMove(direccion) {
           cerdo.x = sizeCanvas * 2;
           secreto(
             "🐖 La granja no te intereso nada, y te fuiste de vacaciones a Miami 🏖️ (?.",
-            "👻Final Secreto 2/2👻"
+            "👻Final Secreto <strong style='color: hsl(28, 100%, 52%);'>2/2</strong>👻"
           );
           finalConseguido(5);
           return;
@@ -155,7 +155,7 @@ function playerMove(direccion) {
           cerdo.x = sizeCanvas * 2;
           secreto(
             "🐖 La granja no te intereso nada, y te fuiste de vacaciones a Disneyland 🏰 (?.",
-            "👻Final Secreto 2/2👻"
+            "👻Final Secreto <strong style='color: hsl(28, 100%, 52%);'>2/2</strong>👻"
           );
           finalConseguido(5);
           return;
@@ -178,11 +178,14 @@ function playerMove(direccion) {
       if (cerdo.y >= 400 && cerdo.x >= 400) {
         secreto(
           "🐺🐖 Las gallinas ven que llegas junto con el lobo, creen que es un buen sujeto y por alguna razón todos terminaron de fiesta (?.",
-          "👻Final Secreto 1/2👻"
+          "👻Final Secreto <strong style='color: hsl(28, 100%, 52%);'>1/2</strong>👻"
         );
         finalConseguido(4);
       } else {
-        perdiste("🐺 Perdiste 🐺<br>El lobo te devoró", "🥓 Final 1/4 🥓");
+        perdiste(
+          "🐺 Perdiste 🐺<br>El lobo te devoró",
+          "🥓 Final <strong style='color: hsl(28, 100%, 52%);'>1/4</strong> 🥓"
+        );
         finalConseguido(0);
       }
     } else if (
@@ -194,7 +197,7 @@ function playerMove(direccion) {
       //
       ganaste(
         "😨 Ganaste pero solo por poco! 😨<br>Llegaste al granero apenas antes que el lobo y entre varios lo ahuyentaron",
-        "⚔️ Final 3/4 ⚔️"
+        "⚔️ Final <strong style='color: hsl(28, 100%, 52%);'>3/4</strong> ⚔️"
       );
       finalConseguido(2);
     } else if (cerdo.y >= 400 && cerdo.x >= 400) {
@@ -203,7 +206,7 @@ function playerMove(direccion) {
       dibujar();
       ganaste(
         "😎🥳 VICTORIA APLASTANTE!! 🥳😎<br>Llegaste al granero mucho antes que el lobo",
-        "✌️ Final 4/4 👍"
+        "✌️ Final <strong style='color: hsl(28, 100%, 52%);'>4/4</strong> 👍"
       );
       finalConseguido(3);
     } else if (lobo.x >= 400 && lobo.y >= 400) {
@@ -212,7 +215,7 @@ function playerMove(direccion) {
       dibujar();
       perdiste(
         "🥺 Perdiste 🥺<br>El lobo llego antes al granero y se comió todos los animales<br>😤 Juraste venganza 😠",
-        "👊 Final 2/4 👊"
+        "👊 Final <strong style='color: hsl(28, 100%, 52%);'>2/4</strong> 👊"
       );
       finalConseguido(1);
     }
@@ -227,7 +230,7 @@ function ganaste(msj, fn = "") {
   dibujarLinea("#90EE90", 465, 30, 250, 470, canvasVilla, 70);
   byId("mensaje").innerHTML = msj;
   byId("mensaje").style.color = "#99ff99";
-  byId("final").style.color = "green";
+  byId("final").style.color = "hsl(120, 100%, 70%)";
   byId("final").innerHTML = fn;
   byId("btnReset").className = "unselectable btn";
   juegoTerminado = true;
@@ -237,7 +240,7 @@ function perdiste(msj, fn = "") {
   dibujarLinea("red", 100, 400, 400, 100, canvasVilla, 75);
   byId("mensaje").innerHTML = msj;
   byId("mensaje").style.color = "#ff9999";
-  byId("final").style.color = "red";
+  byId("final").style.color = "hsl(0, 100%, 70%)";
   byId("final").innerHTML = fn;
   byId("btnReset").className = "unselectable btn red";
   juegoTerminado = true;
@@ -249,8 +252,8 @@ function secreto(msj, fn = "") {
   dibujarLinea("blue", 375, 75, 150, 75, canvasVilla, 50);
   dibujarLinea("blue", 150, 75, 150, 200, canvasVilla, 50);
   byId("mensaje").innerHTML = msj;
-  byId("mensaje").style.color = "9999ff";
-  byId("final").style.color = "blue";
+  byId("mensaje").style.color = "#9999ff";
+  byId("final").style.color = "hsl(240, 100%, 70%)";
   byId("final").innerHTML = fn;
   byId("btnReset").className = "unselectable btn blue";
   juegoTerminado = true;
@@ -261,8 +264,9 @@ function reiniciarJuego() {
   lobo.x = 200;
   lobo.y = 0;
   byId("mensaje").innerHTML =
-    "🏞️ Tu eres el cerdito 🐖<br>Tienes que llegar rápido al gallinero 🐔🏚️ y antes que el lobo 🐺.<br><br>🐾 ¡Salva las gallinas de sus garras! 🐾";
-  byId("final").innerHTML = "Usa ↕️↔️ para moverte.";
+    '🏞️ Eres el <strong style="color: hsl(145, 100%, 49%);">cerdito</strong> 🐖<br><br>Llega <strong style="color: hsl(28, 100%, 52%);">rápido</strong> al  <strong style="color: hsl(145, 100%, 49%);">gallinero</strong> 🐔 y <strong style="color: hsl(28, 100%, 52%);">antes que</strong> el <strong style="color: hsl(6, 100%, 57%);">lobo</strong> 🐺<br><br>🐾 <strong style="color: hsl(185, 100%, 42%);">¡Salva ésas gallinas!</strong> 🐾';
+  byId("final").innerHTML =
+    '🎮🕹️⌨️🖱️👉<br>Usa <strong style="color: hsl(28, 100%, 52%);">↕️↔️</strong> para <strong style="color: hsl(28, 100%, 52%);">moverte</strong>';
   byId("mensaje").style.color = "white";
   byId("final").style.color = "white";
   byId("btnReset").className = "unselectable btn orange";

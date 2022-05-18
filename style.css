@@ -5,7 +5,6 @@ body{
   text-align: center;
   font-size: 24px;
   font-family: Trebuchet, Arial, sans-serif;
-  font-weight: bold;
   color: #ffffff;
   background-color: #222222;
   padding: 0px;
@@ -33,7 +32,7 @@ body{
 }
 h1, h2, h3{
   margin: 10px;
-  color: #98CA3F;
+  color: hsl(82, 77%, 52%);
 }
 h1{
   font-size: 60px;
@@ -141,7 +140,7 @@ a:active {
   font-size: 40px;
   border-width: 0;
   outline: none;
-  background-color: #2ecc71;
+  background-color: hsl(28, 100%, 52%);
   color: #ecf0f1;
   transition: background-color .3s;
   border-radius: 10px 10px 0 0;
@@ -149,25 +148,25 @@ a:active {
   width: 400px;
 }
 .btn:hover, .btn:focus {
-  background-color: #27ae60;
+  background-color: hsl(24, 100%, 41%);
 }
 .btn.orange {
-  background-color: #e67e22;
+  background-color: hsl(28, 100%, 52%);
 }
 .btn.orange:hover, .btn.orange:focus {
-  background-color: #d35400;
+  background-color: hsl(24, 100%, 41%);
 }
 .btn.red {
-  background-color: #e74c3c;
+  background-color: hsl(6, 100%, 57%);
 }
 .btn.red:hover, .btn.red:focus {
-  background-color: #c0392b;
+  background-color: hsl(6, 100%, 46%);
 }
 .btn.blue {
-  background-color: #16828C;
+  background-color: hsl(185, 100%, 32%);
 }
 .btn.blue:hover, .btn.blue:focus {
-  background-color: #115d64;
+  background-color: hsl(185, 100%, 23%);
 }
 
 @media (max-width: 900px) {
@@ -229,11 +228,11 @@ a:active {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: hsl(207, 100%, 54%);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px hsl(207, 100%, 54%);
 }
 
 input:checked + .slider:before {

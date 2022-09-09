@@ -1,3 +1,5 @@
+// Aclaración: algunas practicas recomendadas como la modularización de código no se llevaron a cabo en este proyecto porque se encuentra acotado (a propósito) solamente al contenido brindado por el Curso Gratis de Programacion Basica brindada en Platzi
+
 var byId = function (id) {
   return document.getElementById(id);
 };
